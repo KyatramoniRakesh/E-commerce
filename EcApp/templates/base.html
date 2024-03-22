@@ -77,9 +77,9 @@
                 <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">Rakesh</a>
                 <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Orders</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="{% url 'pc' %}">Change Password</a></li>
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
             </li>
@@ -90,7 +90,7 @@
                 <a href="#" class="nav-link text-white">Wishlist</a>
             </li>
             <li class="nav-item mx-2">
-                <a href="{% url 'login' %}}" class="nav-link text-white">Login</a>
+                <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
             </li>
             <li class="nav-item mx-2">
                 <a href="{% url 'registration' %}" class="nav-link text-white">Registration</a>
