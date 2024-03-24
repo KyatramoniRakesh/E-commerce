@@ -19,7 +19,11 @@ urlpatterns = [
     #Add_to_cart
     path('add',views.add_to_cart, name='add'),
     path('cart',views.show_cart, name='cart'),
-    path('checkout',views.show_cart, name='checkout'),
+    path('checkout',views.Checkout.as_view(), name='checkout'),
+
+    path('pluscart',views.plus_cart),
+    path('minuscart',views.minus_cart),
+    path('removecart', views.remove_cart),
 
 
     #login authentication
