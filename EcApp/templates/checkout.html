@@ -72,7 +72,7 @@
         "name": "YourCart",
         "description": "Purchase Product",
         "order_id": "{{order_id}}", //This is a sample Order ID. Pass the 'id' obtained in the response of Step 1
-        "handler": function (response) {
+        "handler": function(response) {
             console.log("success")
             var form = document.getElementById("myform");
             //alert(form. elements["custid"]. value);
@@ -98,4 +98,6 @@
             e.preventDefault();
         }
 </script>
+
+
 {% endblock payment-gateway  %}

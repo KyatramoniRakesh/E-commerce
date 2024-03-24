@@ -186,7 +186,7 @@ class Checkout(View):
         totalamount = famount + 40
         razoramount = int(totalamount * 100)
         client =  razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
-        data = { "amount": razoramount, "currency":"INR", "receipt":"ordered_rcptid_1"}
+        data = { "amount": razoramount, "currency":"INR", "receipt":"ordered_rcptid_12"}
         payment_response = client.order.create(data=data)
         print(payment_response)
         # {'id': 'order_NqEU8HU2PO3ODw', 'entity': 'order', 'amount': 11800, 'amount_paid': 0, 'amount_due': 11800,
@@ -222,6 +222,6 @@ def payment_done(request):
     #To save order details
     cart=Cart.objects.filter(user=user)
     for c in cart:
-        OrderPlaced(user=user, customer=customer,product=c.product, quantity=c.quantity, payment=payment) . save()
+        OrderPlaced(user=user, customer=customer,product=c.product, quantity=c.quantity, payment=payment).save()
         c.delete()
     return redirect("orders")
