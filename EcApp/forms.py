@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from .models import Customer
 
 
-class Login(AuthenticationForm):
-    username = UsernameField(widget=forms.TextInput(attrs={'autofocus': 'True', 'class': 'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'autocomplete':'curent-password','class':'form-control'}))
+# class Login(AuthenticationForm):
+#     username = UsernameField(widget=forms.TextInput(attrs={'autofocus': 'True', 'class': 'form-control'}))
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'autocomplete':'curent-password','class':'form-control'}))
 class Registration(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'autofocus': 'True','class':'form-control'}))
     email = forms.EmailField(widget= forms.EmailInput(attrs={'class':'form-control'}))

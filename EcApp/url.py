@@ -3,7 +3,8 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_view
 from django.urls import path
 from . import views
-from .forms import Login,MyPasswordChangeForm,MySetPasswordForm,MyPasswordResetForm
+from .forms import MyPasswordChangeForm,MySetPasswordForm,MyPasswordResetForm
+
 
 urlpatterns = [
     path('',views.home,name='home'),
@@ -20,18 +21,21 @@ urlpatterns = [
     path('add',views.add_to_cart, name='add'),
     path('cart',views.show_cart, name='cart'),
     path('checkout',views.Checkout.as_view(), name='checkout'),
-    path('orders', views.home,name='orders'),
+
 
     path('pluscart',views.plus_cart),
     path('minuscart',views.minus_cart),
     path('paymentdone',views.payment_done,name='paymentdone'),
     path('removecart', views.remove_cart),
+    path('orders', views.Orders, name='orders'),
+
 
 
 
     #login authentication
     path('registration',views.CustomerRegistration.as_view(),name='registration'),
-    path('accounts/login',auth_view.LoginView.as_view(template_name = 'Login.html',authentication_form = Login), name='login'),
+    # path('accounts/login',auth_view.LoginView.as_view(template_name = 'Login.html',authentication_form = Login), name='login'),
+    path('accounts/login/', auth_view.LoginView.as_view(template_name='login.html'), name='login'),
     path('passwordchangedone',auth_view.PasswordChangeDoneView.as_view(template_name='changepassworddone.html'),name='passwordchangedone'),
     path('passwordchange',auth_view.PasswordChangeView.as_view(template_name='changepassword.html',
                 form_class = MyPasswordChangeForm,success_url='passwordchangedone'),name='pc'),

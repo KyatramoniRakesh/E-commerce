@@ -6,9 +6,16 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
-
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 from .forms import Registration, CustomerProfileForm
 from .models import Product, Cart, Payment,Customer,OrderPlaced
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import AnonymousUser
+from django.urls import reverse
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login
 
 
 # Create your views here.
@@ -48,6 +55,28 @@ class CustomerRegistration(View):
         else:
             messages.warning(request,'Invalid Input Data')
         return render(request,'registration.html',locals())
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            # Authenticate user
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                # Log the user in
+                auth_login(request, user)
+                # Redirect the user to the URL specified in the 'next' parameter if it exists
+                next_url = request.POST.get('next')
+                if next_url:
+                    return redirect(next_url)
+                else:
+                    # Redirect to a default URL after successful login
+                    return redirect('home')  # Change 'home' to your desired URL name
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
 
 class Profile(View):
     def get(self,request):
@@ -174,6 +203,7 @@ def remove_cart(request):
             }
         return JsonResponse(data)
 
+
 class Checkout(View):
     def get(self,request):
         user = request.user
@@ -189,11 +219,9 @@ class Checkout(View):
         data = { "amount": razoramount, "currency":"INR", "receipt":"ordered_rcptid_12"}
         payment_response = client.order.create(data=data)
         print(payment_response)
-        # {'id': 'order_NqEU8HU2PO3ODw', 'entity': 'order', 'amount': 11800, 'amount_paid': 0, 'amount_due': 11800,
-        #  'currency': 'INR', 'receipt': 'ordered_rcptid_1', 'offer_id': None, 'status': 'created', 'attempts': 0,
-        #  'notes': [], 'created_at': 1711292090}
 
         order_id = payment_response['id']
+
         order_status = payment_response['status']
         if order_status == 'created':
             payment = Payment(
@@ -206,22 +234,39 @@ class Checkout(View):
 
         return render(request,'checkout.html',locals())
 
+
+@login_required
 def payment_done(request):
     order_id=request.GET.get('order_id')
     payment_id=request.GET.get('payment_id')
     cust_id=request.GET.get('cust_id')
-    #print("payment_done : oid = ",order_id," pid = ",payment_id, " cid = ", cust_id)
-    user=request.user
-    #return redirect("orders")
-    customer=Customer.objects.get(id=cust_id)
-    #To update payment status and payment id
-    payment=Payment.objects.get(razorpay_order_id=order_id)
+    print("payment done : oid=",order_id,'pid=',payment_id,'Cust id = ',cust_id)
+    user = request.user
+    customer = Customer.objects.get(id=cust_id)
+
+    payment = Payment.objects.get(razorpay_order_id=order_id)
     payment.paid = True
     payment.razorpay_payment_id = payment_id
     payment.save()
-    #To save order details
-    cart=Cart.objects.filter(user=user)
-    for c in cart:
-        OrderPlaced(user=user, customer=customer,product=c.product, quantity=c.quantity, payment=payment).save()
-        c.delete()
-    return redirect("orders")
+
+    cart_items = Cart.objects.filter(user=user)
+    for cart_item in cart_items:
+        OrderPlaced.objects.create(
+            user=user,
+            customer=customer,
+            product=cart_item.product,
+            quantity=cart_item.quantity,
+            payment=payment
+        )
+        cart_item.delete()
+    return redirect('orders')
+
+
+@login_required
+def Orders(request):
+    # Your logic for fetching orders goes here
+    # For demonstration purposes, let's assume you're fetching orders from the database
+    orders = OrderPlaced.objects.filter(user=request.user)
+
+    # Render the orders template with the orders
+    return render(request, 'orders.html', {'orders': orders})

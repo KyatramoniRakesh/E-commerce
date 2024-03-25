@@ -133,13 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # settings.py
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'rakesh.rk1306@gmail.com'  # Your Gmail address
-# EMAIL_HOST_PASSWORD = 'Rakhee@7095'  # Your Gmail app password
-# DEFAULT_FROM_EMAIL = 'rakesh.rk1306@gmail.com'  # Your default from email
-
 RAZOR_KEY_ID = "rzp_test_11nqvUumUPOswv"
 RAZOR_KEY_SECRET = "TNpzmSY4cFX6mTqQbbWZrkR6"

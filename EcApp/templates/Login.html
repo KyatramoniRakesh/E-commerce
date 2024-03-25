@@ -12,6 +12,7 @@
                 {% for fm in form %}
                     {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
                 {% endfor %}
+                <input type="hidden" name="next" value="{{ next }}">
                 <small><a href="{% url 'password_reset' %}">Forgot Password ?</a></small>
                 <br>
                 <input type="submit" class="btn btn-primary mt-4" value="Login">
