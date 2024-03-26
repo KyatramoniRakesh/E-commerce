@@ -21,7 +21,11 @@ urlpatterns = [
     path('add',views.add_to_cart, name='add'),
     path('cart',views.show_cart, name='cart'),
     path('checkout',views.Checkout.as_view(), name='checkout'),
+    path('pluswishlist/',views.plus_wishlist),
+    path('minuswishlist/',views.minus_wishlist),
+    path('wishlist/', views.Wishlist, name='wishlist'),
 
+    path('search/', views.Search, name='search'),
 
     path('pluscart',views.plus_cart),
     path('minuscart',views.minus_cart),
@@ -34,7 +38,6 @@ urlpatterns = [
 
     #login authentication
     path('registration',views.CustomerRegistration.as_view(),name='registration'),
-    # path('accounts/login',auth_view.LoginView.as_view(template_name = 'Login.html',authentication_form = Login), name='login'),
     path('accounts/login/', auth_view.LoginView.as_view(template_name='login.html'), name='login'),
     path('passwordchangedone',auth_view.PasswordChangeDoneView.as_view(template_name='changepassworddone.html'),name='passwordchangedone'),
     path('passwordchange',auth_view.PasswordChangeView.as_view(template_name='changepassword.html',
