@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_view
 from django.urls import path
 from . import views
 from .forms import MyPasswordChangeForm,MySetPasswordForm,MyPasswordResetForm
+from django.contrib import admin
 
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     path('pluswishlist/',views.plus_wishlist),
     path('minuswishlist/',views.minus_wishlist),
     path('wishlist/', views.Wishlist, name='wishlist'),
+    path('show_wishlist', views.show_wishlist, name='show_wishlist'),
 
     path('search/', views.Search, name='search'),
 
@@ -51,4 +53,8 @@ urlpatterns = [
                                             form_class=MySetPasswordForm),name='password_reset_confirm'),
     path('password-reset-complete/', auth_view.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
         name='password_reset_complete'),
-    ]+static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)
+
+]+static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)
+admin.site.site_header = "Your Cart"
+admin.site.site_title = "Your Cart"
+admin.site.site_index_title = "Welcome to Your Cart"

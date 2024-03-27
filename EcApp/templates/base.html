@@ -88,7 +88,7 @@
                 <a href="{% url 'checkout' %}" class="nav-link text-white"><span class="badge bg-danger"> {% if totalitems > 0 %}{{totalitems}}{%  endif%}</span>Cart</a>
             </li>
             <li class="nav-item mx-2">
-                <a href="{% url 'wishlist' %}" class="nav-link text-white"><span class="badge bg-danger"> {% if wishitem > 0 %}{{wishitem}}{%  endif %}
+                <a href="{% url 'show_wishlist' %}" class="nav-link text-white"><span class="badge bg-danger"> {% if wishitem > 0 %}{{wishitem}}{%  endif %}
                         </span><i class="fa fa-heart"> </i></a>
             </li>
             {% else %}
