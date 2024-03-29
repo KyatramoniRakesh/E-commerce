@@ -29,8 +29,8 @@
 </div>
 {% endblock banner_slider %}
 {% block information %}
-<div class="container">
-    <div class="row bg-success text-center p-5 text-white border-bottom shadow">
+<div class="container" >
+    <div class="row  text-center p-5 text-white border-bottom shadow" style="background-color: #5E5694">
         <h1>Products</h1>
         <small class="fs-5">Dodla offers a wide range of products in both liquid milk
             and by-product categories. The liquid milk comprises of 5 types of variants and
@@ -44,82 +44,76 @@
 {% endblock information %}
 
 {% block main-content %}
-    <div class="container">
-        <h2 class="text-center">Dairy Products</h2>
-        <div class="row container">
-            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s"
-                 data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s;animation-name: none;">
-                <div class="goodnesssec buttermilk smbg">
-                    <a href="{% url 'category' 'GH' %}">
-                        <div class="goodnessseccont text-center">
-                            <img src="{% static 'images/product/buffalo-ghee.png' %}"
-                                 class="img-responsive" alt="">
-                            <p class="mlkpro">Ghee</p>
-                        </div>
-                    </a>
-                </div>
+<div class="container">
+    <h2 class="text-center">Dairy Products</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="goodnesssec buttermilk smbg text-center">
+                <a href="{% url 'category' 'GH' %}">
+                    <div class="goodnessseccont">
+                        <img src="{% static 'images/product/buffalo-ghee.png' %}" class="img-fluid" alt="Ghee">
+                        <p class="mlkpro mt-3">Ghee</p>
+                    </div>
+                </a>
             </div>
-            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s"
-                 data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s;animation-name: none;">
-                 <div class="goodnesssec buttermilk curdbgprof ">
-                    <a href="{% url 'category' 'CR' %}">
-                        <div class="goodnessseccont text-center">
-                            <img src="{% static 'images/product/curd-total.png' %}"
-                                 class="img-responsive" alt="Curd Img">
-                            <p class="mlkpro">Curd</p>
-                        </div>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="goodnesssec buttermilk curdbgprof text-center">
+                <a href="{% url 'category' 'ML' %}">
+                    <div class="goodnessseccont">
+                        <img src="{% static 'images/product/cow-milk.png' %}" class="img-fluid" alt="Milk">
+                        <p class="mlkpro mt-3">Milk</p>
+                    </div>
+                </a>
             </div>
-            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s"
-                 data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s;animation-name: none;">
-                 <div class="goodnesssec buttermilk buttermilk">
-                    <a href="{% url 'category' 'IC' %}">
-                        <div class="goodnessseccont text-center">
-                            <img src="{% static 'images/product/kulfi.png' %}"
-                                 class="img-responsive" alt="Kulfi Img">
-                            <p class="mlkpro">Ice-Creams</p>
-                        </div>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="goodnesssec buttermilk curdbgprof text-center">
+                <a href="{% url 'category' 'CR' %}">
+                    <div class="goodnessseccont">
+                        <img src="{% static 'images/product/curd-total.png' %}" class="img-fluid" alt="Curd">
+                        <p class="mlkpro mt-3">Curd</p>
+                    </div>
+                </a>
             </div>
-            <br><br>
-             <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s"
-                 data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s;animation-name: none;">
-                <div class="goodnesssec buttermilk smbg">
-                    <a href="{% url 'category' 'MS' %}">
-                        <div class="goodnessseccont text-center">
-                            <img src="{% static 'images/product/milk-shake-chocolate.png' %}"
-                                 class="img-responsive" alt="">
-                            <p class="mlkpro">Milkshake</p>
-                        </div>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="goodnesssec buttermilk buttermilk text-center">
+                <a href="{% url 'category' 'IC' %}">
+                    <div class="goodnessseccont">
+                        <img src="{% static 'images/product/icbars.png' %}" class="img-fluid" alt="Icebar">
+                        <p class="mlkpro mt-3">Icebar</p>
+                    </div>
+                </a>
             </div>
-            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s"
-                 data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s;animation-name: none;">
-                 <div class="goodnesssec buttermilk curdbgprof ">
-                    <a href="{% url 'category' 'ML' %}">
-                        <div class="goodnessseccont text-center">
-                            <img src="{% static 'images/product/cow-milk.png' %}"
-                                 class="img-responsive" alt="Curd Img">
-                            <p class="mlkpro">Milk</p>
-                        </div>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="goodnesssec buttermilk buttermilk text-center">
+                <a href="{% url 'category' 'IC' %}">
+                    <div class="goodnessseccont">
+                        <img src="{% static 'images/product/kulfi.png' %}" class="img-fluid" alt="Ice Creams">
+                        <p class="mlkpro mt-3">Ice Creams</p>
+                    </div>
+                </a>
             </div>
-            <div class="col-md-4 col-sm-4 mi-go wow fadeInUp" data-wow-duration="1s"
-                 data-wow-delay="0.6s" style="animation-duration: 1s; animation-delay: 0.6s;animation-name: none;">
-                 <div class="goodnesssec buttermilk buttermilk">
-                    <a href="{% url 'category' 'IC' %}">
-                        <div class="goodnessseccont text-center">
-                            <img src="{% static 'images/product/icbars.png' %}"
-                                 class="img-responsive" alt="Kulfi Img">
-                            <p class="mlkpro">Icebar</p>
-                        </div>
-                    </a>
-                </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="goodnesssec buttermilk smbg text-center">
+                <a href="{% url 'category' 'MS' %}">
+                    <div class="goodnessseccont">
+                        <img src="{% static 'images/product/milk-shake-chocolate.png' %}" class="img-fluid"
+                             alt="Milkshake">
+                        <p class="mlkpro mt-3">Milkshake</p>
+                    </div>
+                </a>
             </div>
         </div>
 
-    {% endblock main-content %}
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock main-content %}

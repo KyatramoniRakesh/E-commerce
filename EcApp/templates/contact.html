@@ -1,9 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Contact Page {% endblock title%}
+{% block title %}Contact Us{% endblock title %}
+
 {% block main-content %}
-<div class="container text-center my-5">
-    <h1>....Welcome to contact page.... </h1>
-<h2>Don't forget to design this page</h2>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mb-4">Get in Touch</h2>
+            <p>Have a question or feedback? We'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible.</p>
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-4">Our Location</h2>
+            <p>Visit us at our dairy farm to experience our products firsthand. We're located at:</p>
+            <address>
+                123 Dairy Lane<br>
+                Hyderabad, Telangana 500058<br>
+                India
+            </address>
+            <p>For inquiries, you can also reach us via phone or email:</p>
+            <p><strong>Phone:</strong> +91 9121949924<br>
+            <strong>Email:</strong> rakesh.rk1306@gmail.com</p>
+        </div>
+    </div>
 </div>
 {% endblock main-content %}

@@ -1,33 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} About Page {% endblock title%}
+{% block title %}About Us{% endblock title %}
+
 {% block main-content %}
-<div class="container mt-3">
-    <br>
-    <h2 class="text-center">About Us</h2>
-    <br>
-    <div class="row container">
-        <p class="fs-4 text-center">This is a public limited company having its
-            registered and corporate office at
-            Pune City of Maharahstra State in India. The company was incorporated in
-            the year
-            2018 and production commenced in 2020.
-            This is one of the fastest growing Public Listed Companies in Pune .</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mb-4">About Our Dairy Products</h2>
+            <p>We are passionate about providing high-quality dairy products to our customers. Our journey began with a simple goal - to deliver fresh and delicious dairy items that families can enjoy every day.</p>
+            <p>At our dairy farm, we prioritize the health and well-being of our cows, ensuring they are well-fed and cared for. This commitment to animal welfare reflects in the superior taste and quality of our dairy products.</p>
+            <p>From creamy milk to flavorful cheese and refreshing lassi, we offer a wide range of dairy delights to suit every taste bud. Our products are made with the finest ingredients and produced in hygienic conditions to guarantee freshness and purity.</p>
+            <p>Customer satisfaction is at the heart of everything we do. We strive to exceed expectations by providing exceptional service and maintaining the highest standards of product quality.</p>
+            <p>Thank you for choosing our dairy products. We look forward to serving you and your family for years to come.</p>
+        </div>
+        <div class="col-md-6 my-2">
+            <img src="{% static 'images/banner/product.jpg' %}" class="img-fluid rounded" alt="About Us Image">
+        </div>
     </div>
-    <br>
-    <h2 class="text-center">Mission</h2>
-    <br>
-    <div class="row container">
-        <p class="fs-4 text-center">To embrace the right technology to delight
-            our Customers
-            Empowering the farmer community through our unique 'Relationship Farming'
-            Model
-            To anticipate, understand and respond to our Customers' needs by creating
-            high-quality products and making them available through innovative and
-            convenient channels
-        </p>
-
-    </div>
-
 </div>
+
 {% endblock main-content %}
