@@ -26,7 +26,7 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-success ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">E-Commerce</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -69,7 +69,7 @@
             </ul>
             <form class="d-flex" role="search" action="{% url 'search' %}" method="GET">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-dark" type="submit">Search</button>
+                <button class="btn btn-outline-dark" style="color: white" type="submit">Search</button>
             </form>
 
         </div>
@@ -106,7 +106,7 @@
 {% block information %}{% endblock information %}
 {% block main-content %}{% endblock main-content %}
 {% block payment-gateway %}{% endblock payment-gateway %}
-<footer class="container-fluid bg-success text-center pt-2 mt-5 fixed-bottom"> Copyright : 2024 | Developed by: Rakesh
+<footer class="container-fluid bg-dark  text-center  pt-2 mt-5 fixed-bottom" style="color: white"> Copyright : 2024 | Developed by: Rakesh
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
