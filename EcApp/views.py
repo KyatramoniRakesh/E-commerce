@@ -15,6 +15,11 @@ from .forms import Registration, CustomerProfileForm
 from .models import Product, Cart, Payment, Customer, OrderPlaced,Wishlist
 
 
+from django.core.mail import send_mail
+
+
+
+
 # Create your views here.
 @login_required
 def home(request):
@@ -395,3 +400,28 @@ def Search(request):
     if query is not None:
         product = Product.objects.filter(Q(title__icontains=query))
     return render(request, "search.html", locals())
+
+
+
+
+def send_feedback(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Compose email
+        subject = f"Feedback from {name}"
+        email_message = f"Sender Email: {email}\n\n{message}"
+        recipient_list = ['rakesh.rk1306@gmail.com']  # Replace with your admin's email address
+
+        # Send email
+        send_mail(subject, email_message, email, recipient_list)
+
+        # Redirect after successful submission
+        return redirect('thank_you')  # Assuming you have a thank you page URL named 'thank_you'
+
+    return render(request, 'contact.html')
+
+def thank_you(request):
+    return render(request, 'thank_you.html')

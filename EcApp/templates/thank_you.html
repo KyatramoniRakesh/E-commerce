@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mail{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Email Sent</h1>
+                </div>
+                <div class="card-body">
+                    <p class="lead text-center">Your message has been successfully sent!</p>
+                    <div class="text-center">
+                        <a href="{% url 'home' %}" class="btn btn-primary">Go Back Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

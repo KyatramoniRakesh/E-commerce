@@ -54,6 +54,9 @@ urlpatterns = [
     path('password-reset-complete/', auth_view.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
         name='password_reset_complete'),
 
+    path('sendfeedback',views.send_feedback,name='send_feedback'),
+    path('thank_you/', views.thank_you, name='thank_you'),
+
 ]+static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)
 admin.site.site_header = "Your Cart"
 admin.site.site_title = "Your Cart"
