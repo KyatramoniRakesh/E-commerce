@@ -102,20 +102,16 @@ def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
-            # Authenticate user
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                # Log the user in
                 auth_login(request, user)
-                # Redirect the user to the URL specified in the 'next' parameter if it exists
                 next_url = request.POST.get('next')
                 if next_url:
                     return redirect(next_url)
                 else:
-                    # Redirect to a default URL after successful login
-                    return redirect('home')  # Change 'home' to your desired URL name
+                    return redirect('home')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
@@ -403,7 +399,7 @@ def Search(request):
 
 
 
-
+@login_required
 def send_feedback(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -413,15 +409,14 @@ def send_feedback(request):
         # Compose email
         subject = f"Feedback from {name}"
         email_message = f"Sender Email: {email}\n\n{message}"
-        recipient_list = ['rakesh.rk1306@gmail.com']  # Replace with your admin's email address
+        recipient_list = ['rakesh.rk1306@gmail.com']
 
         # Send email
         send_mail(subject, email_message, email, recipient_list)
-
-        # Redirect after successful submission
-        return redirect('thank_you')  # Assuming you have a thank you page URL named 'thank_you'
+        return redirect('thank_you')
 
     return render(request, 'contact.html')
 
+@login_required
 def thank_you(request):
     return render(request, 'thank_you.html')
